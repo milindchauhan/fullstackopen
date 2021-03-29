@@ -27,16 +27,25 @@ const Content = (props) => {
 }
 
 const Total = (props) => (
-  <>
+  <strong>
     <p>Number of exercises {props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises}</p>
-  </>
+  </strong>
 )
 
 const Course = ({ course }) => {
+  if (course.parts.length === 0) {
+    return (
+      <div>
+        <Header course={course.name} />
+        <p>No parts in this course</p>
+      </div>
+    )
+  }
   return(
     <div>
       <Header course={course.name} />
       <Content course={course} />
+      <Total course={course} />
     </div>
   )
 }
