@@ -26,15 +26,17 @@ const Content = (props) => {
   )
 }
 
-const Total = (props) => (
-  <strong>
-    <p>total of {
-    props.course.parts[0].exercises
-    + props.course.parts[1].exercises
-    + props.course.parts[2].exercises
-    } exercises</p>
-  </strong>
-)
+const Total = (props) => {
+  const total = props.course.parts.reduce((sum, curr) => sum + curr.exercises, 0)
+
+  return (
+    <strong>
+      <p>
+        total of {total} exercises
+      </p>
+    </strong>
+  )
+}
 
 const Course = ({ course }) => {
   if (course.parts.length === 0) {
