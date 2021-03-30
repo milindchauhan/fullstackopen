@@ -19,9 +19,13 @@ const Part = (props) => {
 const Content = (props) => {
   return(
     <>
-      <Part part={props.course.parts[0].name} exercise={props.course.parts[0].exercises} />
-      <Part part={props.course.parts[1].name} exercise={props.course.parts[1].exercises} />
-      <Part part={props.course.parts[2].name} exercise={props.course.parts[2].exercises} />
+      {props.course.parts.map(part =>
+        <Part
+          key={part.id}
+          part={part.name}
+          exercise={part.exercises}
+        />
+      )}
     </>
   )
 }
@@ -75,6 +79,11 @@ function App() {
         name: 'State of a component',
         exercises: 14,
         id: 3
+      },
+      {
+        name: 'Redux',
+        exercises: 11,
+        id: 4
       }
     ]
   }
